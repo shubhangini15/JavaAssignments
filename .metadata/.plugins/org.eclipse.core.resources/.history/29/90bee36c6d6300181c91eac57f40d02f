@@ -1,0 +1,5 @@
+package com.streams.map;
+
+public class CollectorGroupBy {
+
+}

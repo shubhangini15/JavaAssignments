@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;dataHidingConcepts&apos; to &apos;com.dataHidingConcepts&apos;&#x0D;&#x0A;- Original project: &apos;JavaTrainingPractice&apos;&#x0D;&#x0A;- Original element: &apos;JavaTrainingPractice/src/dataHidingConcepts&apos;&#x0D;&#x0A;- Renamed element: &apos;JavaTrainingPractice/src/com.dataHidingConcepts&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;dataHidingConcepts&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;dataHidingConcepts" name="com.dataHidingConcepts" qualified="false" references="true" stamp="1524182016847" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,47 @@
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+@WebServlet("/surl")
+public class SServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+    public SServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		res.setContentType("text/html");
+		PrintWriter out = res.getWriter();
+		String skill = req.getParameter("skill");
+		int exp = Integer.parseInt(req.getParameter("exp"));
+		HttpSession ses = req.getSession(false);
+		ses.setAttribute("skill", skill);
+		ses.setAttribute("exp", exp);
+		out.print("<body bgcolor = lightgreen><center>");
+		out.print("<form action=\"turl\" method=\"get\"><table bgcolor=brown>");
+		out.print("<tr><td> Prefered City: </td> <td><input type=text name=city placeholder=\"Enter City name\"/></tr>");
+		out.print("<tr><td> Expected Salary: </td> <td><input type=text name=esal placeholder=\"Enter expected salary\"/></tr>");
+		out.print("<tr><td colspan=2 align=center><input type=submit value=Submit></td></tr>");
+		
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

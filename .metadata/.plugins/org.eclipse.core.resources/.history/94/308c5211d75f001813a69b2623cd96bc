@@ -1,0 +1,66 @@
+package com.jdbc.datasource;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.sql.DataSource;
+
+import com.mysql.cj.jdbc.MysqlDataSource;
+
+public class JDBCDataSourceDemo {
+
+	public static void main(String[] args) {
+		JDBCDataSourceDemo demo = new JDBCDataSourceDemo();
+		demo.getEmpInfo();
+
+	}
+
+	private void getEmpInfo() {
+		MyDataSource ds = new MyDataSource();
+		Connection conn = null;
+		Statement stmt = null;
+		MysqlDataSource mds = new MysqlDataSource();
+
+		//DataSource dataSource = ds.getMySQLDataSource();
+		try {
+			conn = ds.getMySQLDataSource().getConnection();
+			stmt = conn.createStatement();
+			String sql = "SELECT * from employee";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+
+				int id = rs.getInt(1);
+				String ename = rs.getString(2);
+				String dept = rs.getString(3);
+
+				System.out.print("Employee ID: " + id);
+				System.out.print("Employee Name: " + ename);
+				System.out.println("Department: " + dept);
+			}
+			rs.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException s) {
+				s.printStackTrace();
+			}
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException s1) {
+				s1.printStackTrace();
+			}
+		}
+	}
+}

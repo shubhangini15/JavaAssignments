@@ -1,0 +1,52 @@
+package com.lambda.comparision;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class EmployeeMain {
+
+	public static void main(String[] args) {
+		SortEmployee se = new SortEmployee();
+			try {
+			List<Employee> employees  = se.getEmployees();
+			
+			System.out.println("****Using Lambda Comparison, sort employee name*****");
+			//Sort all employees by first name
+			employees.sort(Comparator.comparing(e -> e.getFirstName()));
+
+			//OR you can use below
+			// employees.sort(Comparator.comparing(Employee::getFirstName));
+
+			//Let's print the sorted list
+			System.out.println(employees);
+
+			System.out.println("***Using for in/each loop*****");
+			for(Employee e: employees) {
+				System.out.println(e);
+			}
+			System.out.println("****Using lambda for each****");
+			employees.forEach(e->System.out.println(e));
+
+			System.out.println("******Using filter******");
+			List<Employee> result = employees.stream() //convert list to stream
+					.filter(e ->!"Lokesh".equals(e.getFirstName()))   //filter "Lokesh" only
+					.collect(Collectors.toList());     //collect the output and convert streams to a List
+
+			result.forEach(System.out::println); //Output: everything except Lokesh
+
+			/*System.out.println("****filter a null value****");
+			List<Employee> result1 = employees.stream() //convert list to stream
+					.filter(e -> e!=null)  //filter null values
+					.collect(Collectors.toList());     //collect the output and convert streams to a List
+
+			result1.forEach(System.out::println);*/ 
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+
+	}
+
+

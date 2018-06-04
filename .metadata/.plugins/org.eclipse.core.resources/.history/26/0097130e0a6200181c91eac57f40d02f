@@ -1,0 +1,71 @@
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/verify")
+public class VerifyServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
+    public VerifyServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+	
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "1234");
+			Statement stmt = conn1.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM registration");
+			System.out.println("");
+			while(rs.next()) {
+				String name = rs.getString(1);
+				int age= rs.getInt(2);
+				int exp = rs.getInt(3);
+				String skill = rs.getString(4);
+				int esal =rs.getInt(5);
+				String city = rs.getString(6);
+				String address = rs.getString(7);
+				
+				//out.println(name+"\t"+age+"\t"+exp+"\t"+skill+"\t "+esal+"\t"+city+"\t"+address);
+				out.print("<h1 align=center> Registered Users </h1>");
+				out.print("<body bgcolor=lightblue>");
+				out.print("<center><table bgcolor=lightgreen>");
+				out.print("<tr><th> Name</th><td><input type=text name=name value=" +name+ "/></td></tr>");
+				out.print("<tr><th> Age</th><td><input type=text name=name value=" +age+ "/></td></tr>");
+				out.print("<tr><th> Experience</th><td><input type=text name=name value=" +exp+ "/></td></tr>");
+				out.print("<tr><th> Skill</th><th><input type=text name=name value=" +skill+ "/></td></tr>");
+				out.print("<tr><th> Expected Salary</th><td><input type=text name=name value=" +esal+ "/></td></tr>");
+				out.print("<tr><th> City</th><td><input type=text name=name value=" +city+ "/></td></tr>");
+				out.print("<tr><th> Address</th><td><input type=text name=name value=" +address+ "/></td></tr>");
+				out.print("</table></center></body>");
+				
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

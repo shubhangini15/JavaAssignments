@@ -1,0 +1,49 @@
+// A Naive recursive JAVA program to find minimum of coins
+	// to make a given change V
+/*If V == 0, then 0 coins required.
+If V > 0
+   minCoin(coins[0..m-1], V) = min {1 + minCoins(V-coin[i])} 
+                               where i varies from 0 to m-1 
+                               and coin[i] <= V 
+* Traverse through the coins array and choose first element
+* in the array and subtract it from the given Value. 
+* Try every coin that is smaller value than Target Value given.
+* Calculate subResult will be minimum number of coins required to make the value (V - coin[i])
+* Check for INT_MAX to avoid overflow and see if result can minimized   
+                               */
+public class Coin {
+	
+	  // m is size of coins array (number of different coins)
+	    static int minCoins(int coins[], int m, int V)
+	    {
+	       // base case
+	       if (V == 0) return 0;
+	      
+	       // Initialize result
+	       int res = Integer.MAX_VALUE;
+	       System.out.println("Max Value:  "+res);
+	       
+	       // Try every coin that has smaller value than V
+	       for (int i=0; i<m; i++)
+	       {
+	         if (coins[i] <= V)
+	         {
+	             int subResult = minCoins(coins, m, V-coins[i]);
+	      
+	             // Check for INT_MAX to avoid overflow and see if
+	             // result can minimized
+	             if (subResult != Integer.MAX_VALUE && subResult + 1 < res)
+	                res = subResult + 1;
+	         }
+	       }
+	       return res;
+	    }
+	    public static void main(String args[])
+	    {
+	       int coins[] =  {9, 6, 5, 1};
+	       int m = coins.length;
+	       System.out.println("length: " +m);
+	       int V = 11;
+	       System.out.println("Minimum coins required is "+ minCoins(coins, m, V) );
+	    }
+}

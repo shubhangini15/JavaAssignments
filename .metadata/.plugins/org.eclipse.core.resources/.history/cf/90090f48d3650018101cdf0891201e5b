@@ -1,0 +1,5 @@
+package com.jackson.streaming;
+
+public class JacksonGenerator {
+
+}

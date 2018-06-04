@@ -1,0 +1,63 @@
+package com.lambda.comparision;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class SortEmployee {
+
+	public static void main(String[] args) {
+		try {
+		List<Employee> employees  = getEmployees();
+		System.out.println("****Using Lambda Comparison, sort employee name*****");
+		//Sort all employees by first name
+		employees.sort(Comparator.comparing(e -> e.getFirstName()));
+
+		//OR you can use below
+		// employees.sort(Comparator.comparing(Employee::getFirstName));
+
+		//Let's print the sorted list
+		System.out.println(employees);
+
+		System.out.println("***Using for in/each loop*****");
+		for(Employee e: employees) {
+			System.out.println(e);
+		}
+		System.out.println("****Using lambda for each****");
+		employees.forEach(e->System.out.println(e));
+
+		System.out.println("******Using filter******");
+		List<Employee> result = employees.stream() //convert list to stream
+				.filter(e ->!"Lokesh".equals(e.getFirstName()))   //filter "Lokesh" only
+				.collect(Collectors.toList());     //collect the output and convert streams to a List
+
+		result.forEach(System.out::println); //Output: everything except Lokesh
+
+		System.out.println("****filter a null value****");
+		List<Employee> result1 = employees.stream() //convert list to stream
+				.filter(e -> e!=null)  //filter null values
+				.collect(Collectors.toList());     //collect the output and convert streams to a List
+
+		result1.forEach(System.out::println); 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+		private static List<Employee> getEmployees() {
+			List<Employee> employees = new ArrayList<>();
+			employees.add(new Employee(1, "Lokesh", 32));
+			employees.add(new Employee(2, "Aman", 28));
+			employees.add(new Employee(3, "Aakash", 52));
+			employees.add(new Employee(4, "James", 72));
+			employees.add(new Employee(5, "David", 19));
+			employees.add(new Employee(6, "Lokesh", 25));
+			employees.add(new Employee(7, "Karan", 59));
+			employees.add(new Employee(8, null, 28));
+
+			return employees;
+		}
+
+	}

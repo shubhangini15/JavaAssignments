@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.*;
+
+public class KeyPair {
+
+	public static void main(String[] args) {
+		int sum = 0;
+		//System.out.println("Enter times: ");
+		Scanner input = new Scanner (System.in);
+		int T = input.nextInt();
+		for(int t =0; t < T; t++) {
+		
+		int num = input.nextInt();
+		ArrayList<Integer> arrList = new ArrayList<Integer>();
+		for (int i = 0; i < num; i++) {	
+			int arr = input.nextInt();
+			arrList.add(arr);
+		}
+		//System.out.println(arrList);
+		//System.out.println("Take an input from user: ");
+		int additionInput = input.nextInt();
+		boolean found = false;
+		for(int j = 0; j < arrList.size() && !found; j++) {
+			for(int k = j+1; k < arrList.size(); k++)
+				sum = arrList.get(j) + arrList.get(k);
+			if(sum == additionInput) {
+				System.out.println("Yes");
+				found = true;
+				break;
+			} 
+		}
+		if(!found)
+			System.out.println("No");
+	}
+}
+}

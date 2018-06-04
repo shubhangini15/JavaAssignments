@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;Ebay.selectFurniture()&apos; to &apos;searchHomeOnEbay&apos;&#x0D;&#x0A;- Original project: &apos;SeleniumWithSikuliAndTestNG&apos;&#x0D;&#x0A;- Original element: &apos;Ebay.selectFurniture()&apos;&#x0D;&#x0A;- Renamed element: &apos;Ebay.searchHomeOnEbay()&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;selectFurniture&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;{Ebay.java[Ebay~selectFurniture" name="searchHomeOnEbay" references="true" stamp="1524258073099" version="1.0"/>
+</session>

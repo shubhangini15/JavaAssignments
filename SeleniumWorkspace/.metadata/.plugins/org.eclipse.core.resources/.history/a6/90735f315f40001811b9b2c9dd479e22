@@ -1,0 +1,15 @@
+package com.seleniumDemo;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class SeleniumFirstDemo {
+
+	public static void main(String[] args) {
+		
+		System.setProperty("webdriver.firefox.marionette","C:\\Libraries\\geckodriver.exe");
+		
+		WebDriver driver = new FirefoxDriver();
+		driver.get("https://www.google.com/");
+	}
+}

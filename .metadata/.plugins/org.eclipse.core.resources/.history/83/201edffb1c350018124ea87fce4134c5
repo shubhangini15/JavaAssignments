@@ -1,0 +1,28 @@
+/*
+ * Given two lists as input ex. 1,2,3,4;5,6,7. 
+ * Print the last integer of first list and first integer of second list. 
+ * If they are same only print one, if not print in ascending order ex. 5,4. */
+
+import java.util.*;
+public class TwoListOfInteger {
+
+	public static void main(String[] args) {
+		
+		ArrayList<String> arr1 = new ArrayList<String>(Arrays.asList("3","2","4","6"));
+		ArrayList<String> arr2 = new ArrayList<String>(Arrays.asList("5","6","8"));
+		
+		String last = arr1.get(3);
+		String first = arr2.get(0);
+		System.out.println(last);
+		System.out.println(first);
+		
+		if(last.equals(first)) {
+			System.out.println(last);
+		} else if (last.compareTo(first) > 0) {
+			System.out.println(first+" "+last);
+		} else if (last.compareTo(first) < 0) {
+			System.out.println(last+""+first);
+		}
+		
+}
+}

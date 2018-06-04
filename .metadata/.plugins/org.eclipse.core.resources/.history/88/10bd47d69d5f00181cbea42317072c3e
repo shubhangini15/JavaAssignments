@@ -1,0 +1,28 @@
+package com.jdbc.datasource;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+import snaq.db.DBPoolDataSource;
+
+public class MyDataSourceFactory {
+	
+	public static DataSource getMySQLDataSource() {
+		Properties props = new Properties();
+		FileInputStream fis = null;
+		DBPoolDataSource mysqlDS = null;
+		try {
+			fis = new FileInputStream("db.properties");
+			props.load(fis);
+			mysqlDS = new DBPoolDataSource();
+			mysqlDS.setUrl(props.getProperty("MYSQL_DB_URL"));
+			mysqlDS.setUser(props.getProperty("MYSQL_DB_USERNAME"));
+			mysqlDS.setPassword(props.getProperty("MYSQL_DB_PASSWORD"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return mysqlDS;
+	}
+}

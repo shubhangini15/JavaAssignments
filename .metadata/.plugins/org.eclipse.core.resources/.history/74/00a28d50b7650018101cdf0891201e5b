@@ -1,0 +1,45 @@
+package com.config;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class ConfigDemoSrv extends HttpServlet {
+	
+	ServletConfig cg = null; 
+	
+    public ConfigDemoSrv() {
+        super();
+    }
+    
+    public void init() {
+    	cg = getServletConfig();
+    }
+
+   /* public void init(ServletConfig cg) {
+		this.cg=cg;
+	}*/
+    
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		res.setContentType("text/html");
+		PrintWriter out = res.getWriter();
+		String s = cg.getInitParameter("sno");
+		out.print(s);
+		
+	}
+
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	
+		doGet(req, res);
+		
+	}
+
+}

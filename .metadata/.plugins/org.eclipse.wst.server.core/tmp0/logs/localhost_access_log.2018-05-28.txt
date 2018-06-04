@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [28/May/2018:10:09:57 -0500] "GET /HttpAppwithSession2/verify HTTP/1.1" 200 858
+0:0:0:0:0:0:0:1 - - [28/May/2018:10:10:01 -0500] "GET /HttpAppwithSession2/turl?city=Noida&esal=9000 HTTP/1.1" 500 1449
+0:0:0:0:0:0:0:1 - - [28/May/2018:10:10:05 -0500] "GET /HttpAppwithSession2/surl?exp=4&skill=oracle HTTP/1.1" 500 1449
+0:0:0:0:0:0:0:1 - - [28/May/2018:10:10:06 -0500] "GET /HttpAppwithSession2/furl?name=Manu&addres=Delhi&age=28 HTTP/1.1" 200 454
+0:0:0:0:0:0:0:1 - - [28/May/2018:10:10:08 -0500] "GET /HttpAppwithSession2/ HTTP/1.1" 200 623
